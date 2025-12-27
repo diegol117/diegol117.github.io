@@ -1074,9 +1074,10 @@ Comprehensive background in scientific principles and language skills. Early tra
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="js/resume.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Script de pestañas cargado (con hash)');
+  console.log('Script de pestañas cargado (sin hash)');
 
   const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
 
@@ -1107,9 +1108,9 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     });
 
-    // Cambiar URL CON hash
+    // Cambiar URL SIN hash usando History API
     if (push) {
-      window.location.hash = '/' + tabId;
+      window.history.pushState({ tab: tabId }, '', '/' + tabId);
     }
   }
 
@@ -1124,20 +1125,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Inicializar según hash
+  // Inicializar según la URL
   function initializeTab() {
-    const hash = window.location.hash.replace('#/', '');
-
-    if (validTabs.includes(hash)) {
-      switchTab(hash, false);
+    const path = window.location.pathname.replace('/', '');
+    if (validTabs.includes(path)) {
+      switchTab(path, false);
     } else {
       switchTab('Bio', false);
-      window.location.hash = '/Bio';
+      window.history.replaceState({ tab: 'Bio' }, '', '/Bio');
     }
   }
 
-  // Detectar cambios en el hash (back / forward)
-  window.addEventListener('hashchange', initializeTab);
+  // Detectar cambios en la historia (back / forward)
+  window.addEventListener('popstate', function (event) {
+    if (event.state && event.state.tab) {
+      switchTab(event.state.tab, false);
+    } else {
+      initializeTab();
+    }
+  });
 
   initializeTab();
 
@@ -1145,6 +1151,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+
+    
   </body>
 
 </html>
