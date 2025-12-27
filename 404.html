@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="img/personal.png" type="image/png">
 
     <style>
     :root {
@@ -1073,81 +1074,76 @@ Comprehensive background in scientific principles and language skills. Early tra
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="js/resume.min.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    console.log('Script de pestañas cargado (sin hash)');
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Script de pestañas cargado (con hash)');
 
-    const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
+  const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
 
-    function switchTab(tabId, push = true) {
-      console.log('Cambiando a pestaña:', tabId);
+  function switchTab(tabId, push = true) {
+    console.log('Cambiando a pestaña:', tabId);
 
-      // Ocultar todas las pestañas
-      document.querySelectorAll('.tab-pane').forEach(tab => {
-        tab.classList.remove('active');
-        tab.style.display = 'none';
-      });
+    // Ocultar todas las pestañas
+    document.querySelectorAll('.tab-pane').forEach(tab => {
+      tab.classList.remove('active');
+      tab.style.display = 'none';
+    });
 
-      // Mostrar pestaña activa
-      const activeTab = document.getElementById(tabId);
-      if (activeTab) {
-        activeTab.classList.add('active');
-        activeTab.style.display = 'block';
-      } else {
-        console.error('Pestaña no encontrada:', tabId);
-        return;
-      }
-
-      // Activar enlaces del menú
-      document.querySelectorAll('.tab-link').forEach(link => {
-        link.classList.toggle(
-          'active',
-          link.getAttribute('data-tab') === tabId
-        );
-      });
-
-      // Cambiar URL SIN #
-      if (push) {
-        history.pushState({ tab: tabId }, '', '/' + tabId);
-      }
+    // Mostrar pestaña activa
+    const activeTab = document.getElementById(tabId);
+    if (!activeTab) {
+      console.error('Pestaña no encontrada:', tabId);
+      return;
     }
 
-    // Click en menú principal
+    activeTab.classList.add('active');
+    activeTab.style.display = 'block';
+
+    // Activar enlaces del menú
     document.querySelectorAll('.tab-link').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const tabId = this.getAttribute('data-tab');
-        if (validTabs.includes(tabId)) {
-          switchTab(tabId);
-        }
-      });
+      link.classList.toggle(
+        'active',
+        link.getAttribute('data-tab') === tabId
+      );
     });
 
-    // Inicializar según URL
-    function initializeTab() {
-      const path = window.location.pathname.replace('/', '');
-
-      if (validTabs.includes(path)) {
-        switchTab(path, false);
-      } else {
-        switchTab('Bio', false);
-        history.replaceState({ tab: 'Bio' }, '', '/Bio');
-      }
+    // Cambiar URL CON hash
+    if (push) {
+      window.location.hash = '/' + tabId;
     }
+  }
 
-    // Navegación atrás / adelante
-    window.addEventListener('popstate', function (e) {
-      if (e.state && e.state.tab) {
-        switchTab(e.state.tab, false);
+  // Click en menú
+  document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const tabId = this.getAttribute('data-tab');
+      if (validTabs.includes(tabId)) {
+        switchTab(tabId);
       }
     });
-
-    initializeTab();
-
-    console.log('Número de pestañas:', document.querySelectorAll('.tab-pane').length);
   });
-  </script>
+
+  // Inicializar según hash
+  function initializeTab() {
+    const hash = window.location.hash.replace('#/', '');
+
+    if (validTabs.includes(hash)) {
+      switchTab(hash, false);
+    } else {
+      switchTab('Bio', false);
+      window.location.hash = '/Bio';
+    }
+  }
+
+  // Detectar cambios en el hash (back / forward)
+  window.addEventListener('hashchange', initializeTab);
+
+  initializeTab();
+
+  console.log('Número de pestañas:', document.querySelectorAll('.tab-pane').length);
+});
+</script>
 
   </body>
 
