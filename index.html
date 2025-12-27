@@ -255,16 +255,16 @@ font-family: 'Montserrat', sans-serif !important;
     <div class="collapse navbar-collapse" id="navbarResponsive">
 <ul class="navbar-nav ml-auto">
   <li class="nav-item">
-    <a class="nav-link tab-link js-scroll-trigger active" href="javascript:void(0)" data-tab="Bio">Bio</a>
+    <a class="nav-link tab-link js-scroll-trigger active" href="#/home" data-tab="Bio">Bio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link tab-link js-scroll-trigger" href="javascript:void(0)" data-tab="Experience">Experience</a>
+    <a class="nav-link tab-link js-scroll-trigger" href="#/experience" data-tab="Experience">Experience</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link tab-link js-scroll-trigger" href="javascript:void(0)" data-tab="Education">Education</a>
+    <a class="nav-link tab-link js-scroll-trigger" href="#/education" data-tab="Education">Education</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link tab-link js-scroll-trigger" href="javascript:void(0)" data-tab="Media">Media</a>
+    <a class="nav-link tab-link js-scroll-trigger" href="#/media" data-tab="Media">Media</a>
   </li>
 </ul>
     </div>
@@ -1073,81 +1073,81 @@ Comprehensive background in scientific principles and language skills. Early tra
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="js/resume.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Script de pestañas cargado (Ruta Completa)');
+    console.log('Navegación por Hash (estilo SPA) activa');
 
-    const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
+    // Mapeo de rutas (Ruta en URL : ID de la sección en HTML)
+    // He cambiado 'Bio' por 'home' para que coincida con tu ejemplo
+    const routes = {
+        'home': 'Bio',
+        'experience': 'Experience',
+        'education': 'Education',
+        'media': 'Media'
+    };
 
-    // 1. Detectamos la base del repositorio (ej: /diegolinares.github.io/)
-    // Esto evita que se borre el nombre del repo al cambiar de pestaña
-    const repoPath = window.location.pathname.includes('diegolinares.github.io')
-                     ? '/diegolinares.github.io/'
-                     : '/';
+    function switchTab() {
+        // 1. Obtener el hash actual (ej: #/home)
+        const hash = window.location.hash;
 
-    function switchTab(tabId, push = true) {
-        console.log('Cambiando a pestaña:', tabId);
+        // 2. Extraer la ruta (quitar el '#/' )
+        const path = hash.replace('#/', '');
 
-        // Ocultar todas las pestañas
+        // 3. Determinar qué ID de sección mostrar
+        const sectionId = routes[path] || routes['home'];
+        const tabId = routes[path] ? path : 'home';
+
+        console.log('Navegando a:', sectionId);
+
+        // 4. Lógica visual: Ocultar todos y mostrar el seleccionado
         document.querySelectorAll('.tab-pane').forEach(tab => {
-            tab.classList.remove('active');
             tab.style.display = 'none';
+            tab.classList.remove('active');
         });
 
-        // Mostrar pestaña activa
-        const activeTab = document.getElementById(tabId);
-        if (activeTab) {
-            activeTab.classList.add('active');
-            activeTab.style.display = 'block';
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.style.display = 'block';
+            activeSection.classList.add('active');
         }
 
-        // Activar enlaces del menú
+        // 5. Actualizar estado de los enlaces en el menú
         document.querySelectorAll('.tab-link').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('data-tab') === tabId);
+            link.classList.toggle('active', link.getAttribute('data-tab') === sectionId);
         });
 
-        // 2. Cambiar URL manteniendo el nombre del repositorio
-        if (push) {
-            const newUrl = repoPath + tabId;
-            history.pushState({ tab: tabId }, '', newUrl);
+        // 6. Si entras a la raíz sin hash, forzar /#/home
+        if (!hash || hash === '') {
+            window.location.hash = '/home';
         }
     }
 
-    // Click en menú principal
+    // Escuchar clics en los enlaces del menú
     document.querySelectorAll('.tab-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const tabId = this.getAttribute('data-tab');
-            if (validTabs.includes(tabId)) {
-                switchTab(tabId);
+            const targetTab = this.getAttribute('data-tab');
+
+            // Buscar la clave (la ruta) que corresponde al ID de la sección
+            const routeKey = Object.keys(routes).find(key => routes[key] === targetTab);
+
+            if (routeKey) {
+                window.location.hash = '/' + routeKey;
             }
         });
     });
 
-    // Inicializar según URL al cargar
-    function initializeTab() {
-        // Extraemos la última parte de la URL
-        const pathSegments = window.location.pathname.split('/');
-        const lastSegment = pathSegments[pathSegments.length - 1];
+    // Escuchar cambios en el hash (atrás/adelante en el navegador)
+    window.onhashchange = switchTab;
 
-        if (validTabs.includes(lastSegment)) {
-            switchTab(lastSegment, false);
-        } else {
-            switchTab('Bio', false);
-            // Si entras a la raíz, forzamos /Bio sin perder el nombre del repo
-            history.replaceState({ tab: 'Bio' }, '', repoPath + 'Bio');
-        }
-    }
-
-    window.addEventListener('popstate', function (e) {
-        if (e.state && e.state.tab) {
-            switchTab(e.state.tab, false);
-        }
-    });
-
-    initializeTab();
+    // Ejecutar al cargar la página
+    switchTab();
 });
 </script>
+
+
+
   </body>
 
 </html>
