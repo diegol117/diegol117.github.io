@@ -1073,80 +1073,81 @@ Comprehensive background in scientific principles and language skills. Early tra
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="js/resume.min.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('Script de pestañas cargado (con soporte para GitHub Pages)');
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Script de pestañas cargado (Ruta Completa)');
 
-        const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
+    const validTabs = ['Bio', 'Experience', 'Education', 'Media'];
 
-        function switchTab(tabId, updateHash = true) {
-            console.log('Cambiando a pestaña:', tabId);
+    // 1. Detectamos la base del repositorio (ej: /diegolinares.github.io/)
+    // Esto evita que se borre el nombre del repo al cambiar de pestaña
+    const repoPath = window.location.pathname.includes('diegolinares.github.io')
+                     ? '/diegolinares.github.io/'
+                     : '/';
 
-            // Ocultar todas las pestañas
-            document.querySelectorAll('.tab-pane').forEach(tab => {
-                tab.classList.remove('active');
-                tab.style.display = 'none';
-            });
+    function switchTab(tabId, push = true) {
+        console.log('Cambiando a pestaña:', tabId);
 
-            // Mostrar pestaña activa
-            const activeTab = document.getElementById(tabId);
-            if (activeTab) {
-                activeTab.classList.add('active');
-                activeTab.style.display = 'block';
-            } else {
-                console.error('Pestaña no encontrada:', tabId);
-                return;
-            }
+        // Ocultar todas las pestañas
+        document.querySelectorAll('.tab-pane').forEach(tab => {
+            tab.classList.remove('active');
+            tab.style.display = 'none';
+        });
 
-            // Activar enlaces del menú
-            document.querySelectorAll('.tab-link').forEach(link => {
-                link.classList.toggle(
-                    'active',
-                    link.getAttribute('data-tab') === tabId
-                );
-            });
-
-            // Cambiar la URL usando HASH para que GitHub Pages no de error 404
-            if (updateHash) {
-                window.location.hash = tabId;
-            }
+        // Mostrar pestaña activa
+        const activeTab = document.getElementById(tabId);
+        if (activeTab) {
+            activeTab.classList.add('active');
+            activeTab.style.display = 'block';
         }
 
-        // Click en menú principal
+        // Activar enlaces del menú
         document.querySelectorAll('.tab-link').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                const tabId = this.getAttribute('data-tab');
-                if (validTabs.includes(tabId)) {
-                    switchTab(tabId);
-                }
-            });
+            link.classList.toggle('active', link.getAttribute('data-tab') === tabId);
         });
 
-        // Inicializar según el Hash de la URL
-        function initializeTab() {
-            // Obtenemos el hash quitando el símbolo '#'
-            const currentHash = window.location.hash.replace('#', '');
-
-            if (validTabs.includes(currentHash)) {
-                switchTab(currentHash, false);
-            } else {
-                // Si no hay hash válido, cargar Bio por defecto
-                switchTab('Bio', true);
-            }
+        // 2. Cambiar URL manteniendo el nombre del repositorio
+        if (push) {
+            const newUrl = repoPath + tabId;
+            history.pushState({ tab: tabId }, '', newUrl);
         }
+    }
 
-        // Escuchar cambios en la URL (cuando el usuario usa atrás/adelante)
-        window.addEventListener('hashchange', function () {
-            const currentHash = window.location.hash.replace('#', '');
-            if (validTabs.includes(currentHash)) {
-                switchTab(currentHash, false);
+    // Click en menú principal
+    document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const tabId = this.getAttribute('data-tab');
+            if (validTabs.includes(tabId)) {
+                switchTab(tabId);
             }
         });
-
-        initializeTab();
     });
-    </script>
+
+    // Inicializar según URL al cargar
+    function initializeTab() {
+        // Extraemos la última parte de la URL
+        const pathSegments = window.location.pathname.split('/');
+        const lastSegment = pathSegments[pathSegments.length - 1];
+
+        if (validTabs.includes(lastSegment)) {
+            switchTab(lastSegment, false);
+        } else {
+            switchTab('Bio', false);
+            // Si entras a la raíz, forzamos /Bio sin perder el nombre del repo
+            history.replaceState({ tab: 'Bio' }, '', repoPath + 'Bio');
+        }
+    }
+
+    window.addEventListener('popstate', function (e) {
+        if (e.state && e.state.tab) {
+            switchTab(e.state.tab, false);
+        }
+    });
+
+    initializeTab();
+});
+</script>
   </body>
 
 </html>
