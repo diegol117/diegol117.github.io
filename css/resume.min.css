@@ -497,3 +497,99 @@ a:active {
 .cv-text {
     position: relative;
 }
+/* Estilo base de la barra (Transparente al inicio) */
+#mainNav {
+  background-color: rgba(0, 0, 0, 0.7); /* O transparente: transparent; */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque moderno */
+  transition: background-color 0.3s ease;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Ajustes para el nombre y foto */
+.navbar-brand img {
+  border: 2px solid #fff;
+}
+
+/* Asegurar que el contenido no quede debajo de la barra */
+body {
+  padding-top: 70px; /* Ajusta según el grosor de tu barra */
+}
+
+/* Estilo para los links */
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+  color: #fff;
+}
+
+/* En móviles, fondo sólido para que se lea el menú */
+@media (max-width: 991.98px) {
+  #mainNav {
+    background-color: #007bff; /* Color sólido de tu elección */
+  }
+}
+
+/* Elimina el margen lateral que empuja el contenido a la derecha */
+body,
+#sideNav,
+.container-fluid,
+#wrapper {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+
+/* Ajuste de la miniatura de imagen */
+.navbar-brand img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+#mainNav {
+    /* Azul oscuro con transparencia equilibrada */
+    background-color:  rgba(1, 33, 105, 0.9) !important;
+    /* Esto evitará que el texto del fondo moleste a la lectura */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+/* Espaciado para los enlaces del menú */
+.nav-link {
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 991.98px) {
+    /* Fondo del área desplegable */
+    .navbar-collapse {
+    background-color: rgba(1, 33, 105, 0.95) !important;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Asegurar que los links se vean blancos y grandes en móvil */
+    .navbar-nav .nav-link {
+        color: white !important;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1.1rem;
+    }
+}
