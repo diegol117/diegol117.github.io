@@ -486,7 +486,17 @@ applications in data science and algorithmic modeling.
   margin: 0 auto;
   max-width: 400px;      /* Ajusta este ancho para controlar cuántos caben por fila en desktop */
 }
+/* Quita la línea de todos los enlaces que contienen imágenes o logos */
+a:hover, a:focus, a:active {
+    text-decoration: none !important;
+    outline: none !important;
+    border-bottom: none !important;
+}
 
+/* Si el logo tiene una clase específica, puedes ser más preciso: */
+.avatar-wrapper a:hover {
+    text-decoration: none !important;
+}
 .academic-grid li {
   flex: 0 0 60px;        /* Mantiene el tamaño fijo de 60px que tenías */
   display: flex;
@@ -768,7 +778,7 @@ font-size: 17px;
     <div class="row align-items-center">
       <div class="col-md-5 text-center border-end border-secondary">
         <div class="avatar-wrapper mb-3">
-          <img src="img/cadenas.png" alt="Carlos E. Cadenas R." class="rounded-circle img-fluid shadow" style="width: 100px; border: 3px solid #0D6EFD;">
+          <img src="img/cadenas.png" alt="Carlos E. Cadenas R." class="rounded-circle img-fluid shadow" style="width: 100px; border: 2px solid #001690;">
         </div>
         <h4 class="card-title mb-1">Carlos E. Cadenas R.</h4>
         <p class="text-primary small mb-2">Professor (Full)</p>
@@ -819,6 +829,7 @@ font-size: 17px;
     background-color: #0D6EFD;
     color: white !important;
   }
+
 </style>
 
 </div>
