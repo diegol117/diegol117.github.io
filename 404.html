@@ -476,29 +476,29 @@ applications in data science and algorithmic modeling.
     0% { transform: scale(1); opacity: 0.6; }
     100% { transform: scale(1.6); opacity: 0; }
   }
-
 .academic-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 60px);
-  justify-content: center;
-  gap: 25px;
+  display: flex;
+  flex-wrap: wrap;       /* Permite que los elementos bajen a la siguiente fila */
+  justify-content: center; /* Centra los elementos en todas las filas, incluyendo la última */
+  gap: 25px;             /* Espacio consistente entre logos */
   padding: 0;
   list-style: none;
   margin: 0 auto;
+  max-width: 400px;      /* Ajusta este ancho para controlar cuántos caben por fila en desktop */
 }
 
-/* Configuración para Celulares (4 columnas) */
+.academic-grid li {
+  flex: 0 0 60px;        /* Mantiene el tamaño fijo de 60px que tenías */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* En celulares, puedes ajustar el max-width o el gap si es necesario */
 @media (max-width: 480px) {
   .academic-grid {
-    grid-template-columns: repeat(4, 60px);
-  }
-
-  /* Centramos los últimos dos logos (9 y 10) en la fila de 4 */
-  .academic-grid li:nth-child(9) {
-    grid-column: 2;
-  }
-  .academic-grid li:nth-child(10) {
-    grid-column: 3;
+    gap: 15px;           /* Reducimos un poco el espacio para que quepan mejor */
+    max-width: 300px;    /* Forzamos que se acomoden según el espacio disponible */
   }
 }
 
