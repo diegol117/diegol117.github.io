@@ -1,0 +1,15 @@
+
+
+
+LOS ESTILOS SE IMPORTAN DEL CSS
+
+  <link href="css/resume.min2.css" rel="stylesheet">
+
+Y DEL JAVASCRIPT
+  <script src="js/resume.min.js"></script>
+
+DESCONOZCO QUE HACE ESTO
+
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/resume.min.css" rel="stylesheet">
