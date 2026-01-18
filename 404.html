@@ -225,6 +225,22 @@ font-family: 'Montserrat', sans-serif !important;
         box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         color: white;
     }
+
+
+  /* Clase base para los elementos que quieres animar */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px); /* Empieza 30px abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+
+  /* Clase que aplicará el JavaScript cuando el elemento sea visible */
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su posición original */
+  }
+
     </style>
 
     <title>Diego Linares - Mathematician</title>
@@ -331,7 +347,7 @@ applications in data science and algorithmic modeling.
   and foundational mathematics for science and engineering students.
 </p>
 
-<p class="mb-5 text-justify">
+<p class="mb-5 text-justify reveal">
   Beyond formal roles, I have experience in academic advising, technical translation,
   and web development for academic and research-oriented projects. I am particularly
   interested in numerical methods for nonlinear equations, statistical modeling,
@@ -343,7 +359,7 @@ applications in data science and algorithmic modeling.
 </p>
 
 <div style="text-align: center; margin: 30px 0;">
-  <img src="img/teach1.jpg" alt="Professional Work" class="field-photo"
+  <img src="img/teach1.jpg" alt="Professional Work" class="field-photo reveal"
        style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
 </div>
 <style>
@@ -711,7 +727,7 @@ font-size: 17px;
 
 
           </section>
-<div class="section-block mt-5">
+<div class="section-block mt-5  reveal">
   <h3 class="block-title">Publications</h3>
   <div class="section-header">
     <div class="section-line"></div>
@@ -741,7 +757,7 @@ font-size: 17px;
     </div>
   </div>
 
-  <div class="publication-card featured-card">
+  <div class="publication-card featured-card reveal">
     <div class="card-content">
       <div class="card-header">
         <h4 class="card-title">
@@ -768,42 +784,99 @@ font-size: 17px;
   </div>
 </div>
 
-<div class="section-block mt-5">
+<div class="section-block mt-5  reveal">
   <h3 class="block-title">Top Co-author</h3>
   <div class="section-header">
     <div class="section-line"></div>
   </div>
-
-  <div class="publication-card co-author-card p-4 mt-3">
-    <div class="row align-items-center">
-      <div class="col-md-5 text-center border-end border-secondary">
-        <div class="avatar-wrapper mb-3">
-          <img src="img/cadenas.png" alt="Carlos E. Cadenas R." class="rounded-circle img-fluid shadow" style="width: 100px; border: 2px solid #001690;">
-        </div>
-        <h4 class="card-title mb-1">Carlos E. Cadenas R.</h4>
-        <p class="text-primary small mb-2">Professor (Full)</p>
-        <p class="card-text small text-muted mb-3">University of Carabobo, FACYT<br>Venezuela</p>
-
-        <a href="https://scholar.google.com/citations?user=MulW9xoAAAAJ&hl=es" target="_blank" class="media-btn see-more-btn d-inline-block" style="text-decoration: none; font-size: 0.8rem;">
-          View Scholar Profile
-        </a>
+<div class="publication-card co-author-card p-4 mt-3 reveal">
+  <div class="row align-items-center">
+    <div class="col-md-5 text-center border-end border-secondary">
+      <div class="avatar-wrapper mb-3">
+        <img src="img/cadenas.png" alt="Carlos E. Cadenas R." class="rounded-circle img-fluid shadow" style="width: 100px; border: 2px solid #001690;">
       </div>
+      <h4 class="card-title mb-1">Carlos E. Cadenas R.</h4>
+      <p class="text-primary small mb-2">Professor (Full)</p>
+      <p class="card-text small text-muted mb-3">University of Carabobo, FACYT<br>Venezuela</p>
 
-      <div class="col-md-7 ps-md-4">
-        <h6 class="text-white-50 small text-uppercase mb-3 mt-3 mt-md-0">Core Research Areas</h6>
-        <p class="card-text small text-muted mb-3">
-          Specialized in high-impact numerical methods and dynamical analysis, focusing on computational efficiency and mathematical modeling.
-        </p>
-        <div class="disciplines-tags d-flex flex-wrap gap-2">
-          <span class="badge rounded-pill border border-primary text-primary">Applied Mathematics</span>
-          <span class="badge rounded-pill border border-primary text-primary">Nonlinear Equations</span>
-          <span class="badge rounded-pill border border-primary text-primary">Numerical Analysis</span>
-          <span class="badge rounded-pill border border-primary text-primary">Finite Element</span>
-          <span class="badge rounded-pill border border-primary text-primary">Fractional Calculus</span>
-        </div>
+      <a href="https://scholar.google.com/citations?user=MulW9xoAAAAJ&hl=es" target="_blank" class="media-btn see-more-btn d-inline-block" style="text-decoration: none; font-size: 0.8rem;">
+        View Scholar Profile
+      </a>
+    </div>
+
+    <div class="col-md-7 ps-md-4">
+      <h6 class="text-white-50 small text-uppercase mb-3 mt-3 mt-md-0">Core Research Areas</h6>
+      <p class="card-text small text-muted mb-3">
+        Specialized in high-impact numerical methods and dynamical analysis, focusing on computational efficiency and mathematical modeling.
+      </p>
+      <div class="disciplines-tags d-flex flex-wrap gap-2">
+        <span class="badge rounded-pill border border-primary text-primary">Applied Mathematics</span>
+        <span class="badge rounded-pill border border-primary text-primary">Nonlinear Equations</span>
+        <span class="badge rounded-pill border border-primary text-primary">Numerical Analysis</span>
+        <span class="badge rounded-pill border border-primary text-primary">Finite Element</span>
+        <span class="badge rounded-pill border border-primary text-primary">Fractional Calculus</span>
       </div>
     </div>
   </div>
+</div>
+
+<style>
+  /* 1. Definimos el estado oculto (abajo y transparente) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition:
+      opacity 1.2s cubic-bezier(0.2, 1, 0.3, 1),
+      transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    visibility: hidden;
+    will-change: transform, opacity;
+  }
+
+  /* 2. Definimos el estado activo (posición original) */
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+
+  /* Opcional: Si quieres que los badges aparezcan con un pequeño retraso */
+  .reveal.active .badge {
+    animation: fadeInTags 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+
+  @keyframes fadeInTags {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+</style>
+
+<script>
+  (function() {
+    const observerOptions = {
+      root: null, // usa el viewport del navegador
+      threshold: 0.1, // se activa cuando el 10% es visible
+      rootMargin: "0px 0px -50px 0px" // se activa un poco antes de llegar para fluidez
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          // Dejamos de observar una vez que ya apareció para ahorrar recursos
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Inicializar la observación al cargar la página
+    document.addEventListener("DOMContentLoaded", () => {
+      const targets = document.querySelectorAll('.reveal');
+      targets.forEach(target => observer.observe(target));
+    });
+  })();
+</script>
 </div>
 
 <style>
@@ -848,7 +921,7 @@ font-size: 17px;
         <div class="resume-block">
           <h3 class="block-title">Software Engineering & Data Science</h3>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Python Engineer</h4>
               <span class="item-date">Dec 2025 – Present</span>
@@ -859,7 +932,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Python Engineer</h4>
               <span class="item-date">Dec 2024 – Present</span>
@@ -871,7 +944,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Data Analyst</h4>
               <span class="item-date">Dec 2022 – Feb 2025</span>
@@ -883,7 +956,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Data Analyst</h4>
               <span class="item-date">May 2023 – Nov 2023</span>
@@ -901,7 +974,7 @@ font-size: 17px;
         <div class="resume-block">
           <h3 class="block-title">Web Development & Design</h3>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Senior Web Developer</h4>
               <span class="item-date">Nov 2025 – Present</span>
@@ -913,7 +986,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Graphic Design Consultant</h4>
               <span class="item-date">Oct 2023 – Present</span>
@@ -932,7 +1005,7 @@ font-size: 17px;
         <div class="resume-block">
           <h3 class="block-title">Academia, Translation & Consulting</h3>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">University Professor</h4>
               <span class="item-date">Dec 2023 – Present</span>
@@ -940,7 +1013,7 @@ font-size: 17px;
             <div class="subheading-custom">University of Carabobo</div>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Academic Advisor</h4>
               <span class="item-date">Jul 2025 – Oct 2025</span>
@@ -952,7 +1025,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Technical Translator</h4>
               <span class="item-date">Nov 2019 – Present</span>
@@ -964,7 +1037,7 @@ font-size: 17px;
             </ul>
           </div>
 
-          <div class="teaching-item">
+          <div class="teaching-item reveal-item">
             <div class="item-header">
               <h4 class="item-title">Technical Translator</h4>
               <span class="item-date">Feb 2022 – Jan 2023</span>
@@ -980,6 +1053,59 @@ font-size: 17px;
     </div>
   </section>
 </div>
+
+
+
+
+
+
+
+
+
+<style>
+  /* Estado inicial de cada elemento */
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+  }
+
+  /* Estado cuando el elemento entra en el viewport */
+  .reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+      root: null, // relativo a la pantalla
+      threshold: 0.15, // se activa cuando el 15% del elemento es visible
+      rootMargin: "0px 0px -20px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          // Dejamos de observar para que la animación solo ocurra una vez
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Seleccionamos todos los elementos con la clase reveal-item
+    const elements = document.querySelectorAll('.reveal-item');
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
+
 
 <script>
 // Interactive Filter Functionality
