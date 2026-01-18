@@ -243,6 +243,21 @@ font-family: 'Montserrat', sans-serif !important;
 
     </style>
 
+<script>
+  document.querySelectorAll('a[data-bs-toggle="tab"], button[data-bs-toggle="tab"]').forEach(tab => {
+  tab.addEventListener('shown.bs.tab', function (event) {
+    // Busca el contenedor principal de las pestañas
+    const tabContent = document.querySelector('.tab-content');
+
+    // Hace scroll suave hasta el inicio del contenido
+    tabContent.scrollIntoView({
+      behavior: 'auto',
+      block: 'start'
+    });
+  });
+});
+</script>
+
     <title>Diego Linares - Mathematician</title>
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -1665,13 +1680,13 @@ Comprehensive background in scientific principles and language skills. Early tra
           <div class="media-meta subheading-custom">Manim Animation · 1080p HD</div>
           <p class="media-description mb-3">
             Visual derivation showing how a circle's area can be calculated by dividing it into segments
-            that rearrange to form a rectangle. This geometric transformation demonstrates why
-            the area formula is πr².
+            that rearrange to form a rectangle.
           </p>
 
-          <div class="video-wrapper">
-            <video src="img/CircleArea.mp4" controls autoplay loop muted
-              poster="img/circlearea.jpg" preload="metadata" class="video-responsive mb-3">
+          <div class="video-wrapper reveal">
+            <video src="img/CircleArea.mp4" autoplay loop muted playsinline
+                   poster="img/circlearea.jpg" preload="metadata"
+                   class="video-responsive mb-3" style="pointer-events: none;">
               Your browser does not support HTML5 video.
             </video>
           </div>
@@ -1687,13 +1702,13 @@ Comprehensive background in scientific principles and language skills. Early tra
           <h3 class="mb-1 item-title">Triangle Area Visualization</h3>
           <div class="media-meta subheading-custom">Manim Animation · 1080p HD</div>
           <p class="media-description mb-3">
-            Animation demonstrating that a triangle's area equals (a+b+c)/2 × r (semiperimeter × inradius).
-            This visualization connects the triangle's sides with its inscribed circle to derive the area formula.
+            Animation demonstrating that a triangle's area equals (a+b+c)/2 × r.
           </p>
 
-          <div class="video-wrapper">
-            <video src="img/TriangleMap.mp4" controls autoplay loop muted
-              poster="img/trianglemap.jpg" preload="metadata" class="video-responsive mb-3">
+          <div class="video-wrapper reveal">
+            <video src="img/TriangleMap.mp4" autoplay loop muted playsinline
+                   poster="img/trianglemap.jpg" preload="metadata"
+                   class="video-responsive mb-3" style="pointer-events: none;">
               Your browser does not support HTML5 video.
             </video>
           </div>
@@ -1710,13 +1725,12 @@ Comprehensive background in scientific principles and language skills. Early tra
           <div class="media-meta subheading-custom">Manim Animation · 1080p HD</div>
           <p class="media-description mb-3">
             Geometric animation showing how a parallelogram's area equals a × b × sin(θ).
-            The visualization demonstrates the relationship between sides, angles, and area
-            through transformation and decomposition.
           </p>
 
-          <div class="video-wrapper">
-            <video src="img/PolygonAnimation.mp4" controls autoplay loop muted
-              poster="img/polygon-thumbnail.jpg" preload="metadata" class="video-responsive mb-3">
+          <div class="video-wrapper reveal">
+            <video src="img/PolygonAnimation.mp4" autoplay loop muted playsinline
+                   poster="img/polygon-thumbnail.jpg" preload="metadata"
+                   class="video-responsive mb-3" style="pointer-events: none;">
               Your browser does not support HTML5 video.
             </video>
           </div>
@@ -1729,7 +1743,6 @@ Comprehensive background in scientific principles and language skills. Early tra
     </div>
   </section>
 </div>
-
 
       </div>
 
@@ -1816,7 +1829,60 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('Número de pestañas:', document.querySelectorAll('.tab-pane').length);
 });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionamos todos los enlaces que activan una pestaña
+    var tabLinks = document.querySelectorAll('a[data-toggle="tab"], a[data-bs-toggle="tab"]');
 
+    tabLinks.forEach(function(tab) {
+      tab.addEventListener('shown.bs.tab', function (e) {
+        // Obtenemos la ubicación del contenedor de las pestañas
+        var tabContent = document.querySelector('.tab-content');
+
+        if (tabContent) {
+          // Calculamos la posición del contenedor respecto a la página
+          var offset = tabContent.getBoundingClientRect().top + window.pageYOffset;
+
+          // Si tienes un menú fijo (navbar), resta su altura aquí (ej: offset - 80)
+          window.scrollTo({
+            top: offset - 20, // -20 para dejar un pequeño margen visual
+            behavior: 'auto' // Movimiento fluido
+          });
+        }
+      });
+    });
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionamos tus enlaces específicos mediante la clase 'tab-link'
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const navbarHeight = document.querySelector('#mainNav').offsetHeight;
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Usamos un pequeño delay (10ms) para permitir que la pestaña cambie de contenido primero
+        setTimeout(() => {
+          const tabContent = document.querySelector('.tab-content');
+
+          if (tabContent) {
+            // Calculamos la posición del contenido
+            const elementPosition = tabContent.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+
+            // Realizamos el scroll
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 10);
+      });
+    });
+  });
+</script>
 
   </body>
 
