@@ -477,11 +477,9 @@ applications in data science and algorithmic modeling.
     100% { transform: scale(1.6); opacity: 0; }
   }
 
-  /* 2. Estilo de la Cuadrícula (Grid) */
 .academic-grid {
   display: grid;
-  /* Cambiamos a 4 columnas de 60px para las primeras dos filas */
-  grid-template-columns: repeat(4, 60px);
+  grid-template-columns: repeat(5, 60px);
   justify-content: center;
   gap: 25px;
   padding: 0;
@@ -489,13 +487,19 @@ applications in data science and algorithmic modeling.
   margin: 0 auto;
 }
 
-/* Este es el bloque nuevo para centrar los últimos dos logos */
-.academic-grid li:nth-child(9) {
-  grid-column: 2; /* Mueve el logo 9 a la posición de la columna 2 */
-}
+/* Configuración para Celulares (4 columnas) */
+@media (max-width: 480px) {
+  .academic-grid {
+    grid-template-columns: repeat(4, 60px);
+  }
 
-.academic-grid li:nth-child(10) {
-  grid-column: 3; /* Mueve el logo 10 a la posición de la columna 3 */
+  /* Centramos los últimos dos logos (9 y 10) en la fila de 4 */
+  .academic-grid li:nth-child(9) {
+    grid-column: 2;
+  }
+  .academic-grid li:nth-child(10) {
+    grid-column: 3;
+  }
 }
 
   /* 3. Estilo del Contenedor de cada Logo */
