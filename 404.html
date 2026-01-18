@@ -478,16 +478,25 @@ applications in data science and algorithmic modeling.
   }
 
   /* 2. Estilo de la Cuadrícula (Grid) */
-  .academic-grid {
-    display: grid;
-    /* Crea 5 columnas de 60px cada una */
-    grid-template-columns: repeat(5, 60px);
-    justify-content: center;
-    gap: 25px;
-    padding: 0;
-    list-style: none;
-    margin: 0 auto;
-  }
+.academic-grid {
+  display: grid;
+  /* Cambiamos a 4 columnas de 60px para las primeras dos filas */
+  grid-template-columns: repeat(4, 60px);
+  justify-content: center;
+  gap: 25px;
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+}
+
+/* Este es el bloque nuevo para centrar los últimos dos logos */
+.academic-grid li:nth-child(9) {
+  grid-column: 2; /* Mueve el logo 9 a la posición de la columna 2 */
+}
+
+.academic-grid li:nth-child(10) {
+  grid-column: 3; /* Mueve el logo 10 a la posición de la columna 3 */
+}
 
   /* 3. Estilo del Contenedor de cada Logo */
   .logo-item-container {
