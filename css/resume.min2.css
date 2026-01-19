@@ -918,3 +918,25 @@ a:active {
     opacity: 1;
     transform: translateY(0);
 }
+
+
+.publication-card {
+    border: 2px solid transparent;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.publication-card.is-visible {
+    border-color: #007bff;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+}
+
+.scroll-reveal-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.scroll-reveal-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
