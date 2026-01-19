@@ -148,13 +148,13 @@ a:not(.nav-link):not(.tab-link):not(.navbar-brand):not(.js-scroll-trigger):hover
 .subheading {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 600;
-    color: var(--primary-color);
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--accent-color);
+    color: #e2e8f0;
+    padding-bottom: 12px;
     margin-bottom: 25px;
-    position: relative;
+    /* Gradiente: empieza en azul y se vuelve transparente */
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #007bff, rgba(0, 68, 148, 0)) 1;
 }
-
 .subheading::after {
     content: '';
     position: absolute;
@@ -162,7 +162,6 @@ a:not(.nav-link):not(.tab-link):not(.navbar-brand):not(.js-scroll-trigger):hover
     left: 0;
     width: 60px;
     height: 2px;
-    background: var(--secondary-color);
 }
 
 .container-fluid {
