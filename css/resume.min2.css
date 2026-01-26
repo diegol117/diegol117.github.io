@@ -1405,9 +1405,12 @@ button:hover .button-text {
 
 .bio-image {
     width: 100%;
+    max-width: 450px; /* <--- Ajusta este valor según tu diseño */
     height: auto;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: block;   /* Evita espacios fantasmas debajo de la imagen */
+    margin: 0 auto;   /* La centra si el contenedor es más grande */
 }
 
 .bio-title {
@@ -1428,14 +1431,28 @@ button:hover .button-text {
 
 .bio-content {
     font-size: 1rem;
+width: 100%;
+    max-width: 800px; /* O el ancho de tu diseño */
+    margin: 0 auto;
 }
 
 .bio-short-text {
     display: block;
     margin-bottom: 15px;
     color: #334155;
+width: 100%;
+    max-width: 800px; /* O el ancho de tu diseño */
+    margin: 0 auto;
+}
+/* Evita que se vea el texto antes de que el CSS esté listo */
+.bio-content, .bio-title {
+    animation: fadeIn 0.3s ease-in forwards;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 .bio-full-text {
     display: none;
     color: #475569;
