@@ -875,26 +875,12 @@ button:hover .button-text {
 
 /* Contenedor principal */
 .video-card {
-    width: 100%;
-    /* Se adapta al contenedor padre, máximo el ancho que definas */
-    max-width: 540px;
-    background: white;
-    padding: .4em;
-    border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    display: inline-block;
-    vertical-align: top;
-    text-align: left;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(55, 155, 255, 0.1);
 }
 
 /* Espacio para el video */
 .video-card-image {
-    background-color: rgb(236, 236, 236);
-    width: 100%;
-    height: 170px;
-    /* Un poco más alto para video 16:9 */
-    border-radius: 6px 6px 0 0;
     overflow: hidden;
     transition: all .3s;
 }
