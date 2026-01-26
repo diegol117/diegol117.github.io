@@ -52,7 +52,7 @@
   <div class="tab-content" id="mainTabContent" style="margin-top: 0 !important; padding-top: 0 !important;">
 
     <div class="tab-pane active" id="Bio" role="tabpanel">
-            <h1 class="mb-1" style="font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">
+      <h1 class="mb-1" style="font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">
         Diego Linares
       </h1>
       <br>
@@ -431,7 +431,7 @@
         </div>
 
         <div class="co-author-card">
-          <div class="ca-banner">
+          <div class="ca-banner" style="background-image: url('img/cadenas-background.jpg');">
             <img src="img/cadenas.png" alt="Carlos E. Cadenas R." class="ca-profile-img">
           </div>
           <div class="ca-menu">
@@ -801,53 +801,62 @@
 
     <div class="tab-pane" id="Media" role="tabpanel">
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="media-features">
-        <div class="my-auto">
+        <div class="my-auto w-100">
           <h2 class="mb-5 section-title">Geometric Visualizations</h2>
 
+          <div
+            style="display: flex; flex-direction: column; gap: 60px; align-items: center; width: 100%; max-width: 600px; margin: 0 auto;">
 
-          <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
             <a href="https://www.fiverr.com/users/diegolinares/portfolio" target="_blank"
-              style="text-decoration: none; display: block;">
-
-              <div class="video-card reveal">
-                <div class="video-card-image">
-                  <video src="video/TriangleMap.mp4" autoplay loop muted playsinline
-                    poster="video/trianglemap.jpg"></video>
+              style="text-decoration: none; width: 100%;">
+              <div class="video-card reveal" style="height: auto; width: 100%; overflow: visible;">
+                <div class="video-card-image" style="height: auto; max-height: none; width: 100%;">
+                  <video src="video/TriangleMap.mp4" loop muted playsinline poster="video/trianglemap.jpg"
+                    style="width: 100%; height: auto; display: block; border-radius: 8px;"></video>
                 </div>
-                <div class="video-category">Manim Animation • 1080p</div>
-                <div class="video-heading">Triangle Area Visualization</div>
-                <p class="video-description">Demonstrating that Area = (a+b+c)/2 × r</p>
-
+                <div style="padding: 20px 0;">
+                  <div class="video-category">Manim Animation • 1080p</div>
+                  <div class="video-heading" style="font-size: 1.8rem; margin: 10px 0;">Triangle Area Visualization
+                  </div>
+                  <p class="video-description">Demonstrating that Area = (a+b+c)/2 × r</p>
+                </div>
               </div>
             </a>
-            <a href="https://www.fiverr.com/users/diegolinares/portfolio" target="_blank"
-              style="text-decoration: none; display: block;">
-              <div class="video-card reveal">
-                <div class="video-card-image">
-                  <video src="video/CircleArea.mp4" autoplay loop muted playsinline
-                    poster="video/circlearea.jpg"></video>
-                </div>
-                <div class="video-category">Manim Animation • 1080p</div>
-                <div class="video-heading">Circle Area Derivation</div>
-                <p class="video-description">Rearranging segments to form a rectangle.</p>
 
+            <a href="https://www.fiverr.com/users/diegolinares/portfolio" target="_blank"
+              style="text-decoration: none; width: 100%;">
+              <div class="video-card reveal" style="height: auto; width: 100%; overflow: visible;">
+                <div class="video-card-image" style="height: auto; max-height: none; width: 100%;">
+                  <video class="media-video" src="video/CircleArea.mp4" loop muted playsinline
+                    poster="video/circlearea.jpg"
+                    style="width: 100%; height: auto; display: block; border-radius: 8px;">
+                  </video>
+                </div>
+                <div style="padding: 20px 0;">
+                  <div class="video-category">Manim Animation • 1080p</div>
+                  <div class="video-heading" style="font-size: 1.8rem; margin: 10px 0;">Circle Area Derivation</div>
+                  <p class="video-description">Rearranging segments to form a rectangle.</p>
+                </div>
               </div>
             </a>
+
             <a href="https://www.fiverr.com/users/diegolinares/portfolio" target="_blank"
-              style="text-decoration: none; display: block;">
-
-              <div class="video-card reveal">
-                <div class="video-card-image">
-                  <video src="video/PolygonAnimation.mp4" autoplay loop muted playsinline
-                    poster="video/polygon-thumbnail.jpg"></video>
+              style="text-decoration: none; width: 100%;">
+              <div class="video-card reveal" style="height: auto; width: 100%; overflow: visible;">
+                <div class="video-card-image" style="height: auto; max-height: none; width: 100%;">
+                  <video class="media-video" src="video/PolygonAnimation.mp4" loop muted playsinline
+                    poster="video/polygon-thumbnail.jpg"
+                    style="width: 100%; height: auto; display: block; border-radius: 8px;">
+                  </video>
                 </div>
-                <div class="video-category">Manim Animation • 1080p</div>
-                <div class="video-heading">Parallelogram Area</div>
-                <p class="video-description">Visual proof of Area = a × b × sin(θ).</p>
-
+                <div style="padding: 20px 0;">
+                  <div class="video-category">Manim Animation • 1080p</div>
+                  <div class="video-heading" style="font-size: 1.8rem; margin: 10px 0;">Parallelogram Area</div>
+                  <p class="video-description">Visual proof of Area = a × b × sin(θ).</p>
+                </div>
               </div>
-
             </a>
+
           </div>
         </div>
       </section>

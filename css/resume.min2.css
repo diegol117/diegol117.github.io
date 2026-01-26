@@ -911,7 +911,7 @@ button:hover .button-text {
 
 .video-category {
     text-transform: uppercase;
-    font-size: 0.7em;
+    font-size: 1.2em;
     font-weight: 600;
     color: rgb(63, 121, 230);
     padding: 10px 7px 0;
@@ -927,7 +927,7 @@ button:hover .button-text {
 
 .video-description {
     color: #666;
-    font-size: 13px;
+    font-size: 18px;
     padding: 0 7px;
     margin: 5px 0;
 }
@@ -1012,7 +1012,7 @@ button:hover .button-text {
 
 .co-author-card .ca-banner {
     /* Imagen de tecnología/redes de alta calidad */
-    background-image: url('https://wallpaperaccess.com/full/2420246.jpg?q=80&w=1200');
+    background-image: url('img/cadenas-background.jpg');
     background-position: center;
     background-size: cover;
     height: 11rem;
