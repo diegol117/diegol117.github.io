@@ -890,10 +890,10 @@ button:hover .button-text {
 
 .video-category {
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-weight: 600;
     color: rgb(63, 121, 230);
-    padding: 10px 7px 0;
+    margin: 10px 20px 10px;
 }
 
 .video-heading {
@@ -902,13 +902,14 @@ button:hover .button-text {
     padding: 7px;
     font-size: 1.1em;
     line-height: 1.2;
+    margin: 5px 10px 10px;
 }
 
 .video-description {
     color: #666;
     font-size: 14px;
     padding: 0 7px;
-    margin: 5px 0;
+    margin: 5px 10px 40px;
 }
 
 .video-author {
