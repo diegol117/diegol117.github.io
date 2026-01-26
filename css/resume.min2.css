@@ -877,7 +877,7 @@ button:hover .button-text {
 .video-card {
     width: 100%;
     /* Se adapta al contenedor padre, máximo el ancho que definas */
-    max-width: 720px;
+    max-width: 540px;
     background: white;
     padding: .4em;
     border-radius: 6px;
@@ -903,10 +903,10 @@ button:hover .button-text {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.video-card-image:hover {
-    transform: scale(0.98);
+    /* Fuerza aceleración por hardware */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .video-category {
@@ -927,7 +927,7 @@ button:hover .button-text {
 
 .video-description {
     color: #666;
-    font-size: 18px;
+    font-size: 14px;
     padding: 0 7px;
     margin: 5px 0;
 }
