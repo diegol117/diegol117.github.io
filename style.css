@@ -195,7 +195,7 @@ body {
 .card-client {
     background: #111;
     width: 14rem;
-    padding: 20px 30px;
+    padding: 20px 50px;
     margin: 0 auto;
     border: 1px solid #333;
     border-radius: 12px;
@@ -256,7 +256,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 /* Sección de Características */
 .features-section {
     width: 100%;
-    padding: 60px 0 80px;
+    padding: 20px 0 80px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.75);
     overflow-x: auto;
     /* Unificado */
